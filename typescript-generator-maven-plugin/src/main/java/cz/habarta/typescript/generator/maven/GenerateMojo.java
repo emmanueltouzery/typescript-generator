@@ -125,6 +125,12 @@ public class GenerateMojo extends AbstractMojo {
     private boolean declarePropertiesAsOptional;
 
     /**
+     * If true declared properties will be readonly.
+     */
+    @Parameter
+    private boolean declarePropertiesAsReadOnly;
+
+    /**
      * Prefix which will be removed from names of classes, interfaces, enums.
      * For example if set to "Json" then mapping for "JsonData" will be "Data".
      */
@@ -304,6 +310,7 @@ public class GenerateMojo extends AbstractMojo {
             settings.setExcludeFilter(excludeClasses, excludeClassPatterns);
             settings.jsonLibrary = jsonLibrary;
             settings.declarePropertiesAsOptional = declarePropertiesAsOptional;
+            settings.declarePropertiesAsReadOnly = declarePropertiesAsReadOnly;
             settings.removeTypeNamePrefix = removeTypeNamePrefix;
             settings.removeTypeNameSuffix = removeTypeNameSuffix;
             settings.addTypeNamePrefix = addTypeNamePrefix;

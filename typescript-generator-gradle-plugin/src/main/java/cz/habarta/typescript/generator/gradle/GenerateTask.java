@@ -26,6 +26,7 @@ public class GenerateTask extends DefaultTask {
     public List<String> includePropertyAnnotations;
     public JsonLibrary jsonLibrary;
     public boolean declarePropertiesAsOptional;
+    public boolean declarePropertiesAsReadOnly;
     public String removeTypeNamePrefix;
     public String removeTypeNameSuffix;
     public String addTypeNamePrefix;
@@ -81,6 +82,7 @@ public class GenerateTask extends DefaultTask {
         settings.setExcludeFilter(excludeClasses, excludeClassPatterns);
         settings.jsonLibrary = jsonLibrary;
         settings.declarePropertiesAsOptional = declarePropertiesAsOptional;
+        settings.declarePropertiesAsReadOnly = declarePropertiesAsReadOnly;
         settings.removeTypeNamePrefix = removeTypeNamePrefix;
         settings.removeTypeNameSuffix = removeTypeNameSuffix;
         settings.addTypeNamePrefix = addTypeNamePrefix;

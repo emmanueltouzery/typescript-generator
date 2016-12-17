@@ -139,7 +139,8 @@ public class Emitter {
         emitComments(property.getComments());
         final TsType tsType = property.getTsType();
         final String questionMark = settings.declarePropertiesAsOptional || (tsType instanceof TsType.OptionalType) ? "?" : "";
-        writeIndentedLine(toPropertyName(property.getName()) + questionMark + ": " + tsType.format(settings) + ";");
+        final String readOnly = settings.declarePropertiesAsReadOnly ? "readonly " : "";
+        writeIndentedLine(readOnly + toPropertyName(property.getName()) + questionMark + ": " + tsType.format(settings) + ";");
     }
 
     private String toPropertyName(String name) {
