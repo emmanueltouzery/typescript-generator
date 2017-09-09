@@ -161,6 +161,17 @@ public class Emitter implements EmitterExtension.Writer {
 
     private void emitBean(TsBeanModel bean, boolean exportKeyword) {
         writeNewLine();
+        boolean coreGenerateBean = true;
+        for (EmitterExtension emitterExtension : settings.extensions) {
+            if (emitterExtension.getFeatures().overridesBeanGeneration) {
+                if (!emitterExtension.emitBean(bean, exportKeyword)) {
+                    coreGenerateBean = false;
+                }
+            }
+        }
+        if (!coreGenerateBean) {
+            return;
+        }
         emitComments(bean.getComments());
         final String declarationType = bean.isClass() ? "class" : "interface";
         final String typeParameters = bean.getTypeParameters().isEmpty() ? "" : "<" + Utils.join(bean.getTypeParameters(), ", ")+ ">";

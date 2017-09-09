@@ -11,6 +11,10 @@ public abstract class EmitterExtension {
     public void emitElements(Writer writer, Settings settings, boolean exportKeyword, TsModel model) {
     }
 
+    public boolean emitBean(TsBeanModel bean, boolean exportKeyword) {
+        return false;
+    }
+
     public static interface Writer {
         public void writeIndentedLine(String line);
     }
